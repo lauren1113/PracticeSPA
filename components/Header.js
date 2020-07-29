@@ -1,5 +1,7 @@
-export default () => `
+export default st => `
 <header>
-  <h1>Example SPA</h1>
+  <h1>${st.header}</h1>
 </header>
 `;
+
+// if you have multiple parameters, need parentheses around them... i.e. "default (st1, st2)"
