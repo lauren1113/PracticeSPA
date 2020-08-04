@@ -1,12 +1,32 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as state from "./store";
-function render(st) {
+import Navigo from "navigo";
+import { capitalize } from "lodash";
+
+const router = new Navigo(location.origin);
+
+router
+  .on({
+    "/": () => render(state.Home),
+    ":page": params => {
+      let routeEntered = params.page;
+      let formattedRoute = capitalize(routeEntered);
+      let pieceOfState = state[formattedRoute];
+      render(pieceOfState);
+    }
+  })
+  .resolve();
+
+function render(st = state.Home) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
   ${Nav(state.Links)}
   ${Main(st)}
   ${Footer()}
   `;
+
+  router.updatePageLinks();
+
   addNavEventListeners();
   addPicOnFormSubmit(st);
 }
