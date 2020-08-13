@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "parcel-build": "parcel build index.html && cp _redirects ./dist/",
-    "serve": "parcel index.html"
+    "serve": "parcel index.html",
+    "watch:server": "nodemon --watch ./server -e js ./server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,7 @@
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
     "prettier": "1.19.1",
     "stylelint": "^11.1.1",
     "stylelint-config-prettier": "^6.0.0",
@@ -24,6 +26,8 @@
   "dependencies": {
     "axios": "^0.19.2",
     "lodash": "^4.17.19",
+    "lodash-id": "^0.14.0",
+    "lowdb": "^1.0.0",
     "navigo": "^7.1.2",
     "parcel-bundler": "^1.12.4"
   }
