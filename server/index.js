@@ -83,7 +83,7 @@ app
       }
     });
 
-    request.on("error", () => internalServerError(response));
+    response.status(404).send("Not Found"));
   })
   .delete((request, response) => {
     const id = request.params.id;
