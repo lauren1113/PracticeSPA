@@ -63,10 +63,20 @@ function render(st = state.Home) {
   ${Main(st)}
   ${Footer(state.Footer)}
   `;
-
   router.updatePageLinks();
-
+  addNavEventListeners();
   addPicOnFormSubmit(st);
+}
+
+function addNavEventListeners() {
+  document.querySelectorAll("nav a").forEach(link =>
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      let linkText = event.target.textContent;
+      let pieceOfState = state[linkText];
+      render(pieceOfState);
+    })
+  );
 }
 
 function addPicOnFormSubmit(st) {
